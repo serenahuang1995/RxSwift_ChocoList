@@ -13,16 +13,19 @@ class ChocoViewController: UIViewController {
     
     private let tableView = ChocoTableView()
     private let carButton = UIBarButtonItem()
-    
     private let chocolates = ChocolateType.ofEurope
+}
 
+// MARK: - View Lifecycle
+extension ChocoViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Chocolate List"
-        confugure()
+        confugureView()
     }
     
-    private func confugure() {
+    private func confugureView() {
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,14 +40,26 @@ class ChocoViewController: UIViewController {
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = .clear
     }
-    
-
 }
 
+// MARK: - Rx setup
+private extension ChocoViewController {
+    
+}
+
+// MARK: - Rx setup
+private extension ChocoViewController {
+    func updateCartButton() {
+        
+    }
+}
+
+// MARK: - TableView Delegate
 extension ChocoViewController: UITableViewDelegate {
     
 }
 
+// MARK: - TableView DataSource
 extension ChocoViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int { return 1 }
