@@ -3,16 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0489E0F826FC15B90068B066 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E0F726FC15B90068B066 /* AppDelegate.swift */; };
 		0489E0FA26FC15B90068B066 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E0F926FC15B90068B066 /* SceneDelegate.swift */; };
-		0489E0FC26FC15B90068B066 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E0FB26FC15B90068B066 /* ViewController.swift */; };
-		0489E0FF26FC15B90068B066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0489E0FD26FC15B90068B066 /* Main.storyboard */; };
+		0489E0FC26FC15B90068B066 /* ChocoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E0FB26FC15B90068B066 /* ChocoViewController.swift */; };
 		0489E10126FC15BB0068B066 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0489E10026FC15BB0068B066 /* Assets.xcassets */; };
 		0489E10426FC15BB0068B066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0489E10226FC15BB0068B066 /* LaunchScreen.storyboard */; };
+		0489E10E26FC1A650068B066 /* ChocoNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E10D26FC1A650068B066 /* ChocoNavigationController.swift */; };
+		0489E13026FC5E8C0068B066 /* ChocoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E12F26FC5E8C0068B066 /* ChocoTableViewCell.swift */; };
+		0489E13226FC64990068B066 /* ChocoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E13126FC64990068B066 /* ChocoTableView.swift */; };
+		0489E13426FC69190068B066 /* ChocolateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E13326FC69190068B066 /* ChocolateType.swift */; };
+		0489E13926FC70EB0068B066 /* CurrencyFormatter + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E13826FC70EB0068B066 /* CurrencyFormatter + Extension.swift */; };
 		E1F67186CC767224AFD31A1E /* Pods_RxSwift_ChocoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B825AEC504C2286501F6BF65 /* Pods_RxSwift_ChocoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +24,15 @@
 		0489E0F426FC15B90068B066 /* RxSwift_ChocoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwift_ChocoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0489E0F726FC15B90068B066 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0489E0F926FC15B90068B066 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0489E0FB26FC15B90068B066 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0489E0FE26FC15B90068B066 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0489E0FB26FC15B90068B066 /* ChocoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocoViewController.swift; sourceTree = "<group>"; };
 		0489E10026FC15BB0068B066 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0489E10326FC15BB0068B066 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0489E10526FC15BB0068B066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0489E10D26FC1A650068B066 /* ChocoNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocoNavigationController.swift; sourceTree = "<group>"; };
+		0489E12F26FC5E8C0068B066 /* ChocoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocoTableViewCell.swift; sourceTree = "<group>"; };
+		0489E13126FC64990068B066 /* ChocoTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocoTableView.swift; sourceTree = "<group>"; };
+		0489E13326FC69190068B066 /* ChocolateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocolateType.swift; sourceTree = "<group>"; };
+		0489E13826FC70EB0068B066 /* CurrencyFormatter + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyFormatter + Extension.swift"; sourceTree = "<group>"; };
 		2E17B8A081ADFFED39C96B94 /* Pods-RxSwift_ChocoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_ChocoList.release.xcconfig"; path = "Target Support Files/Pods-RxSwift_ChocoList/Pods-RxSwift_ChocoList.release.xcconfig"; sourceTree = "<group>"; };
 		533A87C70B0EA61B51D466D0 /* Pods-RxSwift_ChocoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_ChocoList.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift_ChocoList/Pods-RxSwift_ChocoList.debug.xcconfig"; sourceTree = "<group>"; };
 		B825AEC504C2286501F6BF65 /* Pods_RxSwift_ChocoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_ChocoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,13 +73,41 @@
 			children = (
 				0489E0F726FC15B90068B066 /* AppDelegate.swift */,
 				0489E0F926FC15B90068B066 /* SceneDelegate.swift */,
-				0489E0FB26FC15B90068B066 /* ViewController.swift */,
-				0489E0FD26FC15B90068B066 /* Main.storyboard */,
+				0489E13726FC70950068B066 /* Extensions */,
+				0489E13626FC6FC20068B066 /* View */,
+				0489E13126FC64990068B066 /* ChocoTableView.swift */,
+				0489E0FB26FC15B90068B066 /* ChocoViewController.swift */,
+				0489E12F26FC5E8C0068B066 /* ChocoTableViewCell.swift */,
+				0489E10D26FC1A650068B066 /* ChocoNavigationController.swift */,
+				0489E13526FC6F8D0068B066 /* Models */,
 				0489E10026FC15BB0068B066 /* Assets.xcassets */,
 				0489E10226FC15BB0068B066 /* LaunchScreen.storyboard */,
 				0489E10526FC15BB0068B066 /* Info.plist */,
 			);
 			path = RxSwift_ChocoList;
+			sourceTree = "<group>";
+		};
+		0489E13526FC6F8D0068B066 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0489E13326FC69190068B066 /* ChocolateType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0489E13626FC6FC20068B066 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0489E13726FC70950068B066 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0489E13826FC70EB0068B066 /* CurrencyFormatter + Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		19543DD9725DDCDF302B02E6 /* Frameworks */ = {
@@ -88,7 +124,6 @@
 				533A87C70B0EA61B51D466D0 /* Pods-RxSwift_ChocoList.debug.xcconfig */,
 				2E17B8A081ADFFED39C96B94 /* Pods-RxSwift_ChocoList.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -153,7 +188,6 @@
 			files = (
 				0489E10426FC15BB0068B066 /* LaunchScreen.storyboard in Resources */,
 				0489E10126FC15BB0068B066 /* Assets.xcassets in Resources */,
-				0489E0FF26FC15B90068B066 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,8 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0489E0FC26FC15B90068B066 /* ViewController.swift in Sources */,
+				0489E0FC26FC15B90068B066 /* ChocoViewController.swift in Sources */,
+				0489E13426FC69190068B066 /* ChocolateType.swift in Sources */,
 				0489E0F826FC15B90068B066 /* AppDelegate.swift in Sources */,
+				0489E13026FC5E8C0068B066 /* ChocoTableViewCell.swift in Sources */,
+				0489E13226FC64990068B066 /* ChocoTableView.swift in Sources */,
+				0489E13926FC70EB0068B066 /* CurrencyFormatter + Extension.swift in Sources */,
+				0489E10E26FC1A650068B066 /* ChocoNavigationController.swift in Sources */,
 				0489E0FA26FC15B90068B066 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,14 +254,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0489E0FD26FC15B90068B066 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0489E0FE26FC15B90068B066 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0489E10226FC15BB0068B066 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
