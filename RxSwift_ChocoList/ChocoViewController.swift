@@ -9,11 +9,12 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class ChocoViewController: UIViewController {
+class ChocoViewController: BaseViewController {
     
     private let tableView = ChocoTableView()
-    private let carButton = UIBarButtonItem()
+    private let cartButton = UIBarButtonItem()
     private let chocolates = ChocolateType.ofEurope
+    private let bag = DisposeBag()
 }
 
 // MARK: - View Lifecycle
@@ -21,15 +22,35 @@ extension ChocoViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Chocolate List"
-        confugureView()
+        configureNavigation()
+        confugureTableView()
+        
+        cartButton.rx.tap
+            .subscribe(
+            onNext:{ [weak self] in
+                let destination = CartViewController()
+                self?.navigationController?.pushViewController(destination, animated: true)
+            })
+            .disposed(by: bag)
     }
     
-    private func confugureView() {
+    // 每次進到VC就會更新一次
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateCartButton()
+    }
+    
+    private func configureNavigation() {
+        
+        self.configure(title: .list)
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem = cartButton
+    }
+    
+    private func confugureTableView() {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -47,16 +68,24 @@ private extension ChocoViewController {
     
 }
 
-// MARK: - Rx setup
+// MARK: - update cart count immediately
 private extension ChocoViewController {
     func updateCartButton() {
-        
+        cartButton.title = "\(Cart.share.chocolates.count) 🍫"
     }
 }
 
 // MARK: - TableView Delegate
 extension ChocoViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.cellForRow(at: indexPath)
+        
+        let chocolate = chocolates[indexPath.row]
+        Cart.share.chocolates.append(chocolate)
+        updateCartButton()
+    }
 }
 
 // MARK: - TableView DataSource
@@ -73,6 +102,5 @@ extension ChocoViewController: UITableViewDataSource {
         chocoCell.layoutCell(type: chocolates[indexPath.row])
         return chocoCell
     }
-    
 }
 

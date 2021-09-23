@@ -17,14 +17,14 @@ class ChocoTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureSubView()        
+        configureSubViews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureSubView() {
+    private func configureSubViews() {
         
         backgroundColor = .clear
         selectionStyle = .none
@@ -58,5 +58,4 @@ class ChocoTableViewCell: UITableViewCell {
         countryLable.text = type.countryName
         priceLabel.text = CurrencyFormatter.dollarsFormatter.string(for: type.priceInDollars)
     }
-
 }
