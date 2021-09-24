@@ -25,5 +25,5 @@ enum PageTitle: String {
     case list = "List"
     case cart = "Cart"
     case billing = "💳 Info"
-    case final = "Success"
+    case order = "Order"
 }

@@ -11,8 +11,8 @@ extension String {
     
     //MARK: -Credit Card
     var areAllCharactersNumbers: Bool {
-        let nonNumberCharacterSet = CharacterSet.decimalDigits.inverted
-        return rangeOfCharacter(from: nonNumberCharacterSet) == nil
+      let nonNumberCharacterSet = CharacterSet.decimalDigits.inverted
+      return (rangeOfCharacter(from: nonNumberCharacterSet) == nil)
     }
     
     var isLuhnValid: Bool {
@@ -39,7 +39,7 @@ extension String {
     }
     
     var removingSpace: String {
-        return replacingOccurrences(of: "", with: "")
+        return replacingOccurrences(of: " ", with: "")
     }
     
     func integerValue(ofFirstCharacters count: Int) -> Int? {

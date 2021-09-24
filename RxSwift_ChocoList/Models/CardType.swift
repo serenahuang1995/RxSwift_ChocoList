@@ -180,4 +180,3 @@ enum CardType {
     }
   }
 }
-

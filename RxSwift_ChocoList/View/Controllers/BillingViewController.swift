@@ -11,6 +11,12 @@ import RxCocoa
 
 class BillingViewController: BaseViewController {
     
+    enum PlaceHolder: String {
+        case card = " Card Number"
+        case date = " Exp."
+        case cvv = " CVV"
+    }
+    
     private let cardTextField = BillingTextField()
     private let expTextField = BillingTextField()
     private let cvvTextField = BillingTextField()
@@ -49,10 +55,8 @@ extension BillingViewController {
         finalStackView.distribution = .fill
         finalStackView.spacing = 10
 
-        [finalStackView, numberStackView, infoStackView, cardImage, purchaseButton, expTextField, cvvTextField].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview($0)
-        }
+        finalStackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(finalStackView)
 
         [finalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
          finalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -67,9 +71,14 @@ extension BillingViewController {
          cardImage.widthAnchor.constraint(equalToConstant: 48),
          cardImage.heightAnchor.constraint(equalToConstant: 30),
 
-         cvvTextField.widthAnchor.constraint(equalTo: expTextField.widthAnchor, multiplier: 0.5)
+         cvvTextField.widthAnchor.constraint(equalTo: expTextField.widthAnchor, multiplier: 0.5),
+         cvvTextField.heightAnchor.constraint(equalTo: cardTextField.heightAnchor)
 
         ].forEach{ $0.isActive = true }
+        
+        cardTextField.placeholder = PlaceHolder.card.rawValue
+        expTextField.placeholder = PlaceHolder.date.rawValue
+        cvvTextField.placeholder = PlaceHolder.cvv.rawValue
     }
 }
 

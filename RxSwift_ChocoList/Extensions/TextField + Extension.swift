@@ -15,6 +15,7 @@ class BillingTextField: UITextField {
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.cornerRadius = 10
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.font = UIFont.systemFont(ofSize: 14)
     }
     
     required init?(coder: NSCoder) {
