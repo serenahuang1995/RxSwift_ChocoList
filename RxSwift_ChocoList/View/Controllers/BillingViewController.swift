@@ -26,13 +26,6 @@ class BillingViewController: BaseViewController {
 
     private func configureSubViews() {
         
-//        expTextField.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(expTextField)
-//        expTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-//        expTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-//        expTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        
-        
         let numberStackView = UIStackView(arrangedSubviews: [cardTextField, cardImage])
         let infoStackView = UIStackView(arrangedSubviews: [expTextField, cvvTextField])
         [numberStackView, infoStackView].forEach {

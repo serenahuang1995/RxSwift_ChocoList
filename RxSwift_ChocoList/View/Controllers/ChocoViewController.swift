@@ -13,7 +13,7 @@ class ChocoViewController: BaseViewController {
     
     private let tableView = ChocoTableView()
     private let cartButton = UIBarButtonItem()
-    private let chocolates = ChocolateType.ofEurope
+    private let chocolates = Observable.just(ChocolateType.ofEurope) // just(_:) -> Observable基礎值不會有任何更改，但依舊希望將其作為Observable值訪問
     private let bag = DisposeBag()
 }
 
@@ -24,19 +24,10 @@ extension ChocoViewController {
         super.viewDidLoad()
         configureNavigation()
         confugureTableView()
-        
-        cartButton.rx.tap
-            .subscribe(onNext:{ [weak self] in
-                let destination = CartViewController()
-                self?.navigationController?.pushViewController(destination, animated: true)
-            })
-            .disposed(by: bag)
-    }
-    
-    // 每次進到VC就會更新一次
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateCartButton()
+        setupCartObserver()
+        cartButtonTapped()
+        configureCell()
+        setupCellTapHandling()
     }
     
     private func configureNavigation() {
@@ -47,9 +38,7 @@ extension ChocoViewController {
     }
     
     private func confugureTableView() {
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+
         view.addSubview(tableView)
         
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -65,41 +54,52 @@ extension ChocoViewController {
 // MARK: - Rx setup
 private extension ChocoViewController {
     
-}
-
-// MARK: - update cart count immediately
-private extension ChocoViewController {
-    func updateCartButton() {
-        cartButton.title = "\(Cart.share.chocolates.count) 🍫"
+    // You’ll keep getting these notifications until you either unsubscribe or dispose of your subscription
+    func setupCartObserver() {
+        // 把購物車中的chocolates變成Observable
+        Cart.share.chocolates.asObservable()
+            .subscribe(onNext: { [unowned self] chocolates in
+                self.cartButton.title = "\(chocolates.count) 🍫"
+            })
+            .disposed(by: bag)
     }
-}
-
-// MARK: - TableView Delegate
-extension ChocoViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func cartButtonTapped() {
         
-        tableView.cellForRow(at: indexPath)
-        
-        let chocolate = chocolates[indexPath.row]
-        Cart.share.chocolates.append(chocolate)
-        updateCartButton()
+        cartButton.rx.tap
+            .subscribe(onNext:{ [weak self] in
+                let destination = CartViewController()
+                self?.navigationController?.pushViewController(destination, animated: true)
+            })
+            .disposed(by: bag)
     }
-}
-
-// MARK: - TableView DataSource
-extension ChocoViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int { return 1 }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return chocolates.count }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    // 配置cell（這邊可以取代掉table view原本的delegate與data source method）
+    func configureCell() {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChocoTableViewCell.debugDescription(), for: indexPath)
-        guard let chocoCell = cell as? ChocoTableViewCell else { return cell }
-        chocoCell.layoutCell(type: chocolates[indexPath.row])
-        return chocoCell
+        chocolates
+        .bind(to: tableView // bind(to:) -> 將chocolate與tableView中每一行的代碼綁定
+                  .rx
+                  .items(cellIdentifier: ChocoTableViewCell.description(), // items(cellIdentifier:cellType:) -> 傳入cell dentifier跟哪一個cell，
+                         cellType: ChocoTableViewCell.self)) { row, chocolate, cell in // 為每個新項目傳入一個block，有關所有row、row裡的chocolate、cell都會回傳
+            cell.layoutCell(type: chocolate) // Rx framework calls the dequeuing methods as though your table view had its original data source //
+
+        }
+            .disposed(by: bag)
+    }
+    
+    func setupCellTapHandling() {
+        
+        tableView.rx.modelSelected(ChocolateType.self) // modelSelected(_:) -> 傳入正確的Model，會return一個Observable
+            .subscribe(onNext: { [unowned self] chocolate in // 將選定的巧克力加入購物車中
+                let newValue = Cart.share.chocolates.value + [chocolate]
+                Cart.share.chocolates.accept(newValue)
+                
+                if let selectedRow = self.tableView.indexPathForSelectedRow {
+                    self.tableView.cellForRow(at: selectedRow)
+                }
+            })
+            .disposed(by: bag)
     }
 }
 

@@ -74,7 +74,7 @@ extension CartViewController {
         
         resetButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                Cart.share.chocolates = []
+                Cart.share.chocolates.accept([])
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: bag)
