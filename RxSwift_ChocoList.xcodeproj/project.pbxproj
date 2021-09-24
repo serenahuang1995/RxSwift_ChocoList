@@ -20,6 +20,11 @@
 		0489E13B26FC77280068B066 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E13A26FC77280068B066 /* Cart.swift */; };
 		0489E13D26FC7B4E0068B066 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E13C26FC7B4E0068B066 /* CartViewController.swift */; };
 		0489E13F26FC8BC90068B066 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E13E26FC8BC90068B066 /* BaseViewController.swift */; };
+		0489E14126FD735A0068B066 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E14026FD735A0068B066 /* BillingViewController.swift */; };
+		0489E14526FD772F0068B066 /* TextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E14426FD772F0068B066 /* TextField + Extension.swift */; };
+		0489E14726FD77F10068B066 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E14626FD77F10068B066 /* CardType.swift */; };
+		0489E14926FD793B0068B066 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E14826FD793B0068B066 /* String + Extension.swift */; };
+		0489E14B26FD81420068B066 /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489E14A26FD81420068B066 /* Date + Extension.swift */; };
 		E1F67186CC767224AFD31A1E /* Pods_RxSwift_ChocoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B825AEC504C2286501F6BF65 /* Pods_RxSwift_ChocoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +44,11 @@
 		0489E13A26FC77280068B066 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		0489E13C26FC7B4E0068B066 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		0489E13E26FC8BC90068B066 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0489E14026FD735A0068B066 /* BillingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
+		0489E14426FD772F0068B066 /* TextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + Extension.swift"; sourceTree = "<group>"; };
+		0489E14626FD77F10068B066 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		0489E14826FD793B0068B066 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		0489E14A26FD81420068B066 /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		2E17B8A081ADFFED39C96B94 /* Pods-RxSwift_ChocoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_ChocoList.release.xcconfig"; path = "Target Support Files/Pods-RxSwift_ChocoList/Pods-RxSwift_ChocoList.release.xcconfig"; sourceTree = "<group>"; };
 		533A87C70B0EA61B51D466D0 /* Pods-RxSwift_ChocoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift_ChocoList.debug.xcconfig"; path = "Target Support Files/Pods-RxSwift_ChocoList/Pods-RxSwift_ChocoList.debug.xcconfig"; sourceTree = "<group>"; };
 		B825AEC504C2286501F6BF65 /* Pods_RxSwift_ChocoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_ChocoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,12 +91,6 @@
 				0489E0F926FC15B90068B066 /* SceneDelegate.swift */,
 				0489E13726FC70950068B066 /* Extensions */,
 				0489E13626FC6FC20068B066 /* View */,
-				0489E13126FC64990068B066 /* ChocoTableView.swift */,
-				0489E0FB26FC15B90068B066 /* ChocoViewController.swift */,
-				0489E12F26FC5E8C0068B066 /* ChocoTableViewCell.swift */,
-				0489E10D26FC1A650068B066 /* ChocoNavigationController.swift */,
-				0489E13C26FC7B4E0068B066 /* CartViewController.swift */,
-				0489E13E26FC8BC90068B066 /* BaseViewController.swift */,
 				0489E13526FC6F8D0068B066 /* Models */,
 				0489E10026FC15BB0068B066 /* Assets.xcassets */,
 				0489E10226FC15BB0068B066 /* LaunchScreen.storyboard */,
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				0489E13326FC69190068B066 /* ChocolateType.swift */,
+				0489E14626FD77F10068B066 /* CardType.swift */,
 				0489E13A26FC77280068B066 /* Cart.swift */,
 			);
 			path = Models;
@@ -107,6 +112,8 @@
 		0489E13626FC6FC20068B066 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0489E14326FD73780068B066 /* Controllers */,
+				0489E14226FD735D0068B066 /* Views */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,8 +122,32 @@
 			isa = PBXGroup;
 			children = (
 				0489E13826FC70EB0068B066 /* CurrencyFormatter + Extension.swift */,
+				0489E14426FD772F0068B066 /* TextField + Extension.swift */,
+				0489E14826FD793B0068B066 /* String + Extension.swift */,
+				0489E14A26FD81420068B066 /* Date + Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0489E14226FD735D0068B066 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0489E13126FC64990068B066 /* ChocoTableView.swift */,
+				0489E12F26FC5E8C0068B066 /* ChocoTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0489E14326FD73780068B066 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0489E10D26FC1A650068B066 /* ChocoNavigationController.swift */,
+				0489E13E26FC8BC90068B066 /* BaseViewController.swift */,
+				0489E0FB26FC15B90068B066 /* ChocoViewController.swift */,
+				0489E13C26FC7B4E0068B066 /* CartViewController.swift */,
+				0489E14026FD735A0068B066 /* BillingViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		19543DD9725DDCDF302B02E6 /* Frameworks */ = {
@@ -251,10 +282,15 @@
 			files = (
 				0489E0FC26FC15B90068B066 /* ChocoViewController.swift in Sources */,
 				0489E13B26FC77280068B066 /* Cart.swift in Sources */,
+				0489E14926FD793B0068B066 /* String + Extension.swift in Sources */,
 				0489E13F26FC8BC90068B066 /* BaseViewController.swift in Sources */,
+				0489E14726FD77F10068B066 /* CardType.swift in Sources */,
 				0489E13D26FC7B4E0068B066 /* CartViewController.swift in Sources */,
+				0489E14526FD772F0068B066 /* TextField + Extension.swift in Sources */,
+				0489E14B26FD81420068B066 /* Date + Extension.swift in Sources */,
 				0489E13426FC69190068B066 /* ChocolateType.swift in Sources */,
 				0489E0F826FC15B90068B066 /* AppDelegate.swift in Sources */,
+				0489E14126FD735A0068B066 /* BillingViewController.swift in Sources */,
 				0489E13026FC5E8C0068B066 /* ChocoTableViewCell.swift in Sources */,
 				0489E13226FC64990068B066 /* ChocoTableView.swift in Sources */,
 				0489E13926FC70EB0068B066 /* CurrencyFormatter + Extension.swift in Sources */,

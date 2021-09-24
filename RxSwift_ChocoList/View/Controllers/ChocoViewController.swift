@@ -26,8 +26,7 @@ extension ChocoViewController {
         confugureTableView()
         
         cartButton.rx.tap
-            .subscribe(
-            onNext:{ [weak self] in
+            .subscribe(onNext:{ [weak self] in
                 let destination = CartViewController()
                 self?.navigationController?.pushViewController(destination, animated: true)
             })

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class CartViewController: BaseViewController {
     
@@ -13,12 +15,15 @@ class CartViewController: BaseViewController {
     private let resetButton = UIButton()
     private let totalItemLabel = UILabel()
     private let costLabel = UILabel()
+    private let bag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure(title: .cart)
         configureSubViews()
-
+        resetButtonTapped()
+        configureFromCart()
+        checkButtonTapped()
     }
     
     private func configureSubViews() {
@@ -28,6 +33,10 @@ class CartViewController: BaseViewController {
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         stackView.spacing = 0
+        
+        totalItemLabel.font = UIFont.systemFont(ofSize: 30)
+        totalItemLabel.baselineAdjustment = .alignBaselines
+        totalItemLabel.lineBreakMode = .byTruncatingTail
         
         [stackView, checkButton, resetButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -56,5 +65,40 @@ class CartViewController: BaseViewController {
         resetButton.backgroundColor = .yellow
         resetButton.setTitle("Reset!", for: .normal)
         resetButton.setTitleColor(.black, for: .normal)
+    }
+}
+
+extension CartViewController {
+    
+    func resetButtonTapped() {
+        
+        resetButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                Cart.share.chocolates = []
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: bag)
+    }
+    
+    func checkButtonTapped() {
+        
+        checkButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let destination = BillingViewController()
+                self?.navigationController?.pushViewController(destination, animated: true)
+            })
+            .disposed(by: bag)
+    }
+}
+
+extension CartViewController {
+    
+    func configureFromCart() {
+        
+        let cart = Cart.share
+        totalItemLabel.text = cart.itemCount
+        costLabel.text = CurrencyFormatter.dollarsFormatter.string(from: cart.totalCost)
+        
+        checkButton.isEnabled = cart.totalCost > 0
     }
 }
