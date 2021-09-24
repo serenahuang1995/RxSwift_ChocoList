@@ -234,10 +234,3 @@ private extension BillingViewController {
     }
   }
 }
-
-
-
-
-
-
-print("test")
