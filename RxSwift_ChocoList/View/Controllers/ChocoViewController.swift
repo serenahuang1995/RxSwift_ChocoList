@@ -67,9 +67,9 @@ private extension ChocoViewController {
     func cartButtonTapped() {
         
         cartButton.rx.tap
-            .subscribe(onNext:{ [weak self] in
+            .subscribe(onNext:{ [unowned self] in
                 let destination = CartViewController()
-                self?.navigationController?.pushViewController(destination, animated: true)
+                self.navigationController?.pushViewController(destination, animated: true)
             })
             .disposed(by: bag)
     }

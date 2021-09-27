@@ -36,6 +36,7 @@ extension BillingViewController {
         configureSubViews()
         setupCardImageDisplay()
         setupTextChangeHandling()
+        purchaseButtonTapped()
     }
     
     private func configureSubViews() {
@@ -67,6 +68,9 @@ extension BillingViewController {
 
          infoStackView.trailingAnchor.constraint(equalTo: finalStackView.trailingAnchor),
          infoStackView.leadingAnchor.constraint(equalTo: finalStackView.leadingAnchor),
+         
+         purchaseButton.trailingAnchor.constraint(equalTo: finalStackView.trailingAnchor),
+         purchaseButton.leadingAnchor.constraint(equalTo: finalStackView.leadingAnchor),
 
          cardImage.widthAnchor.constraint(equalToConstant: 48),
          cardImage.heightAnchor.constraint(equalToConstant: 30),
@@ -79,6 +83,10 @@ extension BillingViewController {
         cardTextField.placeholder = PlaceHolder.card.rawValue
         expTextField.placeholder = PlaceHolder.date.rawValue
         cvvTextField.placeholder = PlaceHolder.cvv.rawValue
+        
+        purchaseButton.backgroundColor = .brown
+        purchaseButton.setTitle("Buy!", for: .normal)
+        purchaseButton.setTitleColor(.white, for: .normal)
     }
 }
 
@@ -156,6 +164,14 @@ extension BillingViewController {
         // 按鈕僅在所有信用卡詳細信息都有效時才啟用
         everythingValid.bind(to: purchaseButton.rx.isEnabled)
                        .disposed(by: bag)
+    }
+    
+    func purchaseButtonTapped() {
+        purchaseButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                let destination = OrderViewController()
+                self.navigationController?.pushViewController(destination, animated: true)
+            })
     }
 }
 
